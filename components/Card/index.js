@@ -72,20 +72,39 @@ const MediaCard = ({ id, title, description, author, image }) => {
               {author}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {description.length > 75 ? description.slice(0, 75) + "..." : description}
+              {description?.length > 75
+                ? description.slice(0, 75) + "..."
+                : description}
             </Typography>
           </CardContent>
         </Link>
         <CardActions className={classes.actions}>
-          <Button variant="contained" onClick={() => router.push(`/create/${id}`)} size="small" color="primary">
+          <Button
+            variant="contained"
+            onClick={() => router.push(`/create/${id}`)}
+            size="small"
+            color="primary"
+          >
             Edit
           </Button>
-          <Button variant="outlined" size="small" color="secondary" onClick={() => setOpen(true)}>
+          <Button
+            variant="outlined"
+            size="small"
+            color="secondary"
+            onClick={() => setOpen(true)}
+          >
             Delete
           </Button>
         </CardActions>
       </CardActionArea>
-      {image && <CardMedia component="img" className={classes.cover} image={image} title={title} />}
+      {image && (
+        <CardMedia
+          component="img"
+          className={classes.cover}
+          image={image}
+          title={title}
+        />
+      )}
       <Dialog id={id} open={open} setOpen={setOpen} />
     </Card>
   );
